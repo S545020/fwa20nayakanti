@@ -4,7 +4,7 @@ var a;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send(`Random Function: ${Math.random(a).random}`);
+  res.send(`Random Function: ${Math.random(a)}`);
 });
 
 module.exports = router;
