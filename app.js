@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var indexRouter = require('./routes/mydata');
+var mydataRouter = require('./routes/mydata');
 var usersRouter = require('./routes/users');
-var indexRouter = require('./routes/computation');
+var computation = require('./routes/computation');
 
 var app = express();
 
@@ -17,14 +17,14 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use('/mydata',indexRouter)
+app.use('/mydata',mydataRouter)
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/computation',indexRouter);
+app.use('/computation',computationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
