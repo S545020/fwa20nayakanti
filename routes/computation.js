@@ -1,15 +1,37 @@
-var express = require('express');
-var router = express.Router();
-//var a;
-var randomValue = Math.random()*8;
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  //res.send(`Random Function  is : ${Math.fround(Math.random(a))}`);
-  res.write(`Round  Function of ${randomValue} is ${Math.round()} \n`);
-  res.write(`Round  Function of ${randomValue} is ${Math.fround()}\n`);
-  res.write(`Round  Function of ${randomValue} is ${Math.random()}\n`);
+const express = require('express')
+const router = express.Router()
 
-  res.send();
-});
 
-module.exports = router;
+
+
+router.get('/',(req,res,next) =>{
+    console.log(req.query)
+    
+        
+    if(Object.keys(req.query).length === 0){
+        
+        console.log("entered")
+        let rand = Math.random()
+        res.render('computation', {value : `round applied to ${rand} is ${Math.round(rand)}`})
+    }
+    else
+    for(let a in req.query)
+    {
+    {
+        
+        console.log(a)
+    res.render('computation', {value : `round applied to ${req.query[a]} is ${Math.round(req.query[a])}`})
+    }
+}
+
+    
+    
+    
+    
+    
+
+})
+
+
+
+module.exports = router
